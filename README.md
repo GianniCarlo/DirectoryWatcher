@@ -28,7 +28,7 @@ Run `carthage update` to build the framework and drag the built `DirectoryWatche
 
 Here's an example that will monitor your app's Document Folder
 
-```
+```swift
 import DirectoryWatcher
 .
 .
@@ -37,6 +37,6 @@ import DirectoryWatcher
 let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 // It accepts `URL` or `String` as parameter
 let watcher = DirectoryWatcher.watch(documentsUrl) {
-  // A file has been added or removed to the folder
+  // A file has been added to or removed from the folder
 }
 ```
