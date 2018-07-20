@@ -1,4 +1,4 @@
-This is a Swift translation of the [Objective C version](https://github.com/hwaxxer/MHWDirectoryWatcher). Took some inspiration form (this repo)[https://github.com/dagostini/DAFileMonitor/tree/blog_dispatch_sources] as well
+This is a Swift translation of the [Objective C version](https://github.com/hwaxxer/MHWDirectoryWatcher). Took some inspiration from [this repo](https://github.com/dagostini/DAFileMonitor/tree/blog_dispatch_sources) as well
 
 # DirectoryWatcher
 `DirectoryWatcher` is a lightweight class that uses GCD to monitor a given path for changes.
