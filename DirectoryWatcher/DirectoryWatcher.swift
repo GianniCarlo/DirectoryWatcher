@@ -25,7 +25,12 @@ public class DirectoryWatcher: NSObject {
         self.watchedPath = watchedPath
     }
     
-    public class func directoryWatcher(at path: String, callback: @escaping @convention(block) () -> Void) -> DirectoryWatcher? {
+    public class func watch(_ url: URL, callback: @escaping @convention(block) () -> Void) -> DirectoryWatcher? {
+        let path = url.path
+        return DirectoryWatcher.watch(path, callback: callback)
+    }
+    
+    public class func watch(_ path: String, callback: @escaping @convention(block) () -> Void) -> DirectoryWatcher? {
         let directoryWatcher = DirectoryWatcher(watchedPath: path)
         directoryWatcher.callback = callback
         
