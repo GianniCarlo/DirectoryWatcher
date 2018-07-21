@@ -5,6 +5,14 @@ This is a Swift translation of the [Objective C version](https://github.com/hwax
 When any change to the directory occurs, `DirectoryWatcher` starts polling the monitored path, making sure that file transfers are finished before posting notifications.
 
 ## Installing
+
+### [CocoaPods](https://cocoapods.org/) (recommended)
+
+````ruby
+# For latest release in cocoapods
+pod 'DirectoryWatcher'
+````
+
 ### Carthage
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
@@ -26,17 +34,12 @@ Run `carthage update` to build the framework and drag the built `DirectoryWatche
 
 ## Usage
 
-Here's an example that will monitor your app's Document Folder
+Monitor the Documents Folder
 
 ```swift
-import DirectoryWatcher
-.
-.
-.
-
 let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-// It accepts `URL` or `String` as parameter
 let watcher = DirectoryWatcher.watch(documentsUrl) {
   // A file has been added to or removed from the folder
 }
 ```
+Call `watcher.stopWatching()` and `watcher.startWatching()` to pause / resume.
