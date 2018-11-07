@@ -19,13 +19,14 @@ public class DirectoryWatcher: NSObject {
     private var retriesLeft: Int!
     private var directoryChanging = false
 
+    public var ignoreDirectories = true
     public var onNewFiles: (([URL]) -> Void)?
     public var onDeletedFiles: (([URL]) -> Void)?
     
     //init
     init(watchedUrl: URL) {
         self.watchedUrl = watchedUrl
-        let contentsArray = (try? FileManager.default.contentsOfDirectory(at: watchedUrl, includingPropertiesForKeys: [], options: .skipsHiddenFiles)) ?? []
+        let contentsArray = (try? FileManager.default.contentsOfDirectory(at: watchedUrl, includingPropertiesForKeys: [.isDirectoryKey], options: .skipsHiddenFiles)) ?? []
         self.previousContents = Set(contentsArray)
     }
     
@@ -139,7 +140,7 @@ extension DirectoryWatcher {
             // Changes appear to be completed
             // Post a notification informing that the directory did change
             DispatchQueue.main.async {
-                let contentsArray = (try? FileManager.default.contentsOfDirectory(at: self.watchedUrl, includingPropertiesForKeys: [], options: .skipsHiddenFiles)) ?? []
+                let contentsArray = (try? FileManager.default.contentsOfDirectory(at: self.watchedUrl, includingPropertiesForKeys: [.isDirectoryKey], options: .skipsHiddenFiles)) ?? []
                 let newContents = Set(contentsArray)
 
                 let newElements = newContents.subtracting(self.previousContents)
@@ -148,11 +149,27 @@ extension DirectoryWatcher {
                 self.previousContents = newContents
 
                 if !deletedElements.isEmpty {
-                    self.onDeletedFiles?(Array(deletedElements))
+                    let elements = deletedElements.compactMap({ (element) -> URL? in
+                        let isDirectory = (try? element.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory ?? false
+
+                        guard (!isDirectory || !self.ignoreDirectories) else {
+                            return nil
+                        }
+                        return element
+                    })
+                    self.onDeletedFiles?(elements)
                 }
 
                 if !newElements.isEmpty {
-                    self.onNewFiles?(Array(newElements))
+                    let elements = newElements.compactMap({ (element) -> URL? in
+                        let isDirectory = (try? element.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory ?? false
+
+                        guard (!isDirectory || !self.ignoreDirectories) else {
+                            return nil
+                        }
+                        return element
+                    })
+                    self.onNewFiles?(elements)
                 }
             }
         }
