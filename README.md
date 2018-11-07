@@ -27,7 +27,7 @@ $ brew install carthage
 To integrate DirectoryWatcher into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "GianniCarlo/DirectoryWatcher" ~> 1.0.0
+github "GianniCarlo/DirectoryWatcher" ~> 2.0.0
 ```
 
 Run `carthage update` to build the framework and drag the built `DirectoryWatcher.framework` into your Xcode project.
@@ -38,8 +38,14 @@ Monitor the Documents Folder
 
 ```swift
 let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-let watcher = DirectoryWatcher.watch(documentsUrl) {
-  // A file has been added to or removed from the folder
+let watcher = DirectoryWatcher.watch(documentsUrl)
+
+watcher.onNewFiles = { newFiles in
+  // Files have been added
+}
+
+watcher.onDeletedFiles = { deletedFiles in
+  // Files have been deleted
 }
 ```
 Call `watcher.stopWatching()` and `watcher.startWatching()` to pause / resume.
