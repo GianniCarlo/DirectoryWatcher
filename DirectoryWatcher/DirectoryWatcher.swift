@@ -9,12 +9,15 @@
 import Foundation
 
 public class DirectoryWatcher: NSObject {
-    
+    static let retryCount = 5
+    static let pollInterval = 0.2
     var watchedUrl: URL
     
     private var source: DispatchSourceFileSystemObject?
     private var previousContents: Set<URL>
     private var queue: DispatchQueue?
+    private var retriesLeft: Int!
+    private var directoryChanging = false
 
     public var onNewFiles: (([URL]) -> Void)?
     public var onDeletedFiles: (([URL]) -> Void)?
@@ -71,28 +74,97 @@ public class DirectoryWatcher: NSObject {
         
         return true
     }
-
-    private func directoryDidChange() {
-        let contentsArray = (try? FileManager.default.contentsOfDirectory(at: watchedUrl, includingPropertiesForKeys: [], options: .skipsHiddenFiles)) ?? []
-        let newContents = Set(contentsArray)
-
-        let newElements = newContents.subtracting(self.previousContents)
-        let deletedElements = self.previousContents.subtracting(newContents)
-
-        self.previousContents = newContents
-
-        if !deletedElements.isEmpty {
-            self.onDeletedFiles?(Array(deletedElements))
-        }
-
-        if !newElements.isEmpty {
-            self.onNewFiles?(Array(newElements))
-        }
-    }
     
     deinit {
         let _ = self.stopWatching()
         self.onNewFiles = nil
         self.onDeletedFiles = nil
+    }
+}
+
+// MARK: - Private methods
+extension DirectoryWatcher {
+    private func directoryMetadata(_ url: URL) -> [String]? {
+        guard let contents = try? FileManager.default.contentsOfDirectory(atPath: url.path) else {
+            return nil
+        }
+        var directoryMetadata = [String]()
+        for filename in contents {
+
+            let fileUrl = url.appendingPathComponent(filename)
+
+            guard let fileAttributes = try? FileManager.default.attributesOfItem(atPath: fileUrl.path),
+                let fileSize = fileAttributes[.size] as? Double else {
+                    continue
+            }
+
+            let sizeString = String(Int(fileSize))
+            let fileHash = filename + sizeString
+
+            directoryMetadata.append(fileHash)
+        }
+
+        return directoryMetadata
+    }
+
+    private func checkChanges(after delay: TimeInterval) {
+        guard let directoryMetadata = self.directoryMetadata(self.watchedUrl),
+            let queue = self.queue else {
+                return
+        }
+
+        let time = DispatchTime.now() + delay
+
+        queue.asyncAfter(deadline: time) { [weak self] in
+            self?.pollDirectoryForChangesWith(directoryMetadata)
+        }
+    }
+
+    private func pollDirectoryForChangesWith(_ oldMetadata: [String]){
+        guard let newDirectoryMetadata = self.directoryMetadata(self.watchedUrl) else {
+            return
+        }
+
+        self.directoryChanging = newDirectoryMetadata != oldMetadata
+        self.retriesLeft = self.directoryChanging
+            ? DirectoryWatcher.retryCount
+            : self.retriesLeft
+
+        self.retriesLeft = self.retriesLeft - 1
+        if self.directoryChanging || 0 < self.retriesLeft {
+            // Either the directory is changing or
+            // we should try again as more changes may occur
+            self.checkChanges(after: DirectoryWatcher.pollInterval)
+        } else {
+            // Changes appear to be completed
+            // Post a notification informing that the directory did change
+            DispatchQueue.main.async {
+                let contentsArray = (try? FileManager.default.contentsOfDirectory(at: self.watchedUrl, includingPropertiesForKeys: [], options: .skipsHiddenFiles)) ?? []
+                let newContents = Set(contentsArray)
+
+                let newElements = newContents.subtracting(self.previousContents)
+                let deletedElements = self.previousContents.subtracting(newContents)
+
+                self.previousContents = newContents
+
+                if !deletedElements.isEmpty {
+                    self.onDeletedFiles?(Array(deletedElements))
+                }
+
+                if !newElements.isEmpty {
+                    self.onNewFiles?(Array(newElements))
+                }
+            }
+        }
+    }
+
+    private func directoryDidChange() {
+        guard !self.directoryChanging else {
+            return
+        }
+        self.directoryChanging = true
+        self.retriesLeft = DirectoryWatcher.retryCount
+
+        self.checkChanges(after: DirectoryWatcher.pollInterval)
     }
 }
