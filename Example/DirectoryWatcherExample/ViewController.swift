@@ -10,6 +10,8 @@ import UIKit
 import DirectoryWatcher
 
 class ViewController: UIViewController {
+    @IBOutlet weak var textView: UITextView!
+
     var watcher: DirectoryWatcher!
 
     let hardcodedFilename = "test.txt"
@@ -22,13 +24,20 @@ let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         self.watcher = DirectoryWatcher.watch(url)
 
         self.watcher.onNewFiles = { newFiles in
-            print("==== new files: ", newFiles)
+            let log = "==== new files \(newFiles.count): \n\(newFiles.description)"
+            print(log)
+            self.updateLogs(log)
         }
 
         self.watcher.onDeletedFiles = { deletedFiles in
-            print("==== deleted files: ", deletedFiles)
-
+            let log = "==== deleted files: \n\(deletedFiles.description)"
+            print(log)
+            self.updateLogs(log)
         }
+    }
+
+    func updateLogs(_ text: String) {
+        self.textView.text = "\n\(text)\n" + self.textView.text
     }
 
     @IBAction func addRandomFile(_ sender: UIButton) {

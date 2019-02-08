@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DirectoryWatcher"
-  s.version      = "1.1.0"
+  s.version      = "2.3.0"
   s.summary      = "Lightweight listener that uses GCD to monitor changes in a given folder"
 
   # This description is used to generate tags and improve search results.
@@ -63,7 +63,7 @@ DirectoryWatcher is a lightweight class that uses GCD to monitor a given path fo
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "10.0"
+  s.platform     = :ios, "9.0"
   s.swift_version = "4.1"
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"

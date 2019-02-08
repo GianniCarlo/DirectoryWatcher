@@ -18,51 +18,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directory Watcher Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7B-bL-GIW">
+                                <rect key="frame" x="51.5" y="38" width="272" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbT-uX-H1D">
+                                <rect key="frame" x="16" y="98" width="77" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPn-Ij-lEG">
+                                <rect key="frame" x="16" y="137" width="259" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="nUG-pU-1AG"/>
+                                </constraints>
+                                <state key="normal" title="•  Add new random file (multiple taps)"/>
+                                <connections>
+                                    <action selector="addRandomFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PuG-0h-BKj"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waa-Ja-9JX">
-                                <rect key="frame" x="119" y="75" width="137" height="30"/>
+                                <rect key="frame" x="16" y="175" width="152" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="NYH-Q5-zab"/>
                                 </constraints>
-                                <state key="normal" title="Add hard-coded file"/>
+                                <state key="normal" title="•  Add hard-coded file"/>
                                 <connections>
                                     <action selector="addHardCodedFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ks6-WG-6i1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4y-VX-bsv">
-                                <rect key="frame" x="110.5" y="113" width="154" height="30"/>
+                                <rect key="frame" x="16" y="213" width="169" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="iBm-4N-Cek"/>
                                 </constraints>
-                                <state key="normal" title="Delete hard-coded file"/>
+                                <state key="normal" title="•  Delete hard-coded file"/>
                                 <connections>
                                     <action selector="deleteHardCodedFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qr8-t7-7W5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPn-Ij-lEG">
-                                <rect key="frame" x="117" y="37" width="141" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="nUG-pU-1AG"/>
-                                </constraints>
-                                <state key="normal" title="Add new random file"/>
-                                <connections>
-                                    <action selector="addRandomFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PuG-0h-BKj"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watcher Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC9-p7-w4V">
+                                <rect key="frame" x="16" y="263" width="123.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdB-4C-Wss">
+                                <rect key="frame" x="16" y="295" width="343" height="372"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="k4y-VX-bsv" firstAttribute="leading" secondItem="waa-Ja-9JX" secondAttribute="leading" id="0ep-CW-XmZ"/>
+                            <constraint firstItem="NPn-Ij-lEG" firstAttribute="leading" secondItem="sbT-uX-H1D" secondAttribute="leading" id="1fJ-4Y-5Sc"/>
+                            <constraint firstItem="I7B-bL-GIW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="32k-jC-geo"/>
                             <constraint firstItem="waa-Ja-9JX" firstAttribute="top" secondItem="NPn-Ij-lEG" secondAttribute="bottom" constant="8" id="54X-c3-oRS"/>
-                            <constraint firstItem="NPn-Ij-lEG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="5bC-bE-Gd4"/>
+                            <constraint firstItem="LdB-4C-Wss" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="5u6-ca-5b5"/>
                             <constraint firstItem="k4y-VX-bsv" firstAttribute="top" secondItem="waa-Ja-9JX" secondAttribute="bottom" constant="8" id="G6X-Mc-dUz"/>
-                            <constraint firstItem="k4y-VX-bsv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="WPI-wY-wvW"/>
-                            <constraint firstItem="waa-Ja-9JX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="mdm-t5-T32"/>
-                            <constraint firstItem="NPn-Ij-lEG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="swd-Vf-6uh"/>
+                            <constraint firstItem="I7B-bL-GIW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Kgo-NZ-IEC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LdB-4C-Wss" secondAttribute="trailing" constant="16" id="MKo-qF-vDK"/>
+                            <constraint firstItem="NPn-Ij-lEG" firstAttribute="top" secondItem="sbT-uX-H1D" secondAttribute="bottom" constant="15" id="NpY-fT-mdr"/>
+                            <constraint firstItem="sbT-uX-H1D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="PX2-oi-wZp"/>
+                            <constraint firstItem="uC9-p7-w4V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="U6T-vp-Tth"/>
+                            <constraint firstItem="uC9-p7-w4V" firstAttribute="top" secondItem="k4y-VX-bsv" secondAttribute="bottom" constant="20" id="Zq8-3c-05h"/>
+                            <constraint firstItem="LdB-4C-Wss" firstAttribute="top" secondItem="uC9-p7-w4V" secondAttribute="bottom" constant="8" id="ZsG-pv-oGa"/>
+                            <constraint firstItem="waa-Ja-9JX" firstAttribute="leading" secondItem="NPn-Ij-lEG" secondAttribute="leading" id="aYe-KA-icD"/>
+                            <constraint firstItem="sbT-uX-H1D" firstAttribute="top" secondItem="I7B-bL-GIW" secondAttribute="bottom" constant="30" id="bqa-Oj-Cdh"/>
+                            <constraint firstItem="LdB-4C-Wss" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gYB-ka-Nr9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="LdB-4C-Wss" id="c77-Af-lzv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="121.88905547226388"/>
         </scene>
     </scenes>
 </document>
