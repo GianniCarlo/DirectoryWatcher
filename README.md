@@ -32,7 +32,7 @@ github "GianniCarlo/DirectoryWatcher" ~> 2.0.0
 
 Run `carthage update` to build the framework and drag the built `DirectoryWatcher.framework` into your Xcode project.
 
-## Usage
+## Usage (DirectoryWatcher)
 
 Monitor the Documents Folder
 
@@ -49,3 +49,21 @@ watcher.onDeletedFiles = { deletedFiles in
 }
 ```
 Call `watcher.stopWatching()` and `watcher.startWatching()` to pause / resume.
+
+## Usage (DirectoryDeepWatcher)
+
+Monitor the Documents Folder and its subfolders
+
+```swift
+let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+let watcher = DirectoryDeepWatcher.watch(documentsUrl)
+
+watcher.onFolderNotification = { folder in
+  // New changes have happened inside one folder
+  // This folder could be a subfolder inside the root folder being watched
+}
+
+```
+
+
+Call `watcher.stopWatching()` and `watcher.startWatching()` to pause / resume, or `watcher.restartWatching()` to discard previous listeners and place new ones in case the hierarchy has changed
