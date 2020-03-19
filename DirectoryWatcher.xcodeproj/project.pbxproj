@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41AF690A2422FA2B00350FB1 /* DirectoryDeepWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AF69092422FA2B00350FB1 /* DirectoryDeepWatcher.swift */; };
 		41D4F2A92100F712009F1B1E /* DirectoryWatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D4F29F2100F712009F1B1E /* DirectoryWatcher.framework */; };
 		41D4F2AE2100F712009F1B1E /* DirectoryWatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D4F2AD2100F712009F1B1E /* DirectoryWatcherTests.swift */; };
 		41D4F2B02100F712009F1B1E /* DirectoryWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 41D4F2A22100F712009F1B1E /* DirectoryWatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41AF69092422FA2B00350FB1 /* DirectoryDeepWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryDeepWatcher.swift; sourceTree = "<group>"; };
 		41D4F29F2100F712009F1B1E /* DirectoryWatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DirectoryWatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D4F2A22100F712009F1B1E /* DirectoryWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DirectoryWatcher.h; sourceTree = "<group>"; };
 		41D4F2A32100F712009F1B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				41D4F2A22100F712009F1B1E /* DirectoryWatcher.h */,
 				41D4F2A32100F712009F1B1E /* Info.plist */,
 				41D4F2B92100F738009F1B1E /* DirectoryWatcher.swift */,
+				41AF69092422FA2B00350FB1 /* DirectoryDeepWatcher.swift */,
 			);
 			path = DirectoryWatcher;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41AF690A2422FA2B00350FB1 /* DirectoryDeepWatcher.swift in Sources */,
 				41D4F2BA2100F738009F1B1E /* DirectoryWatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
