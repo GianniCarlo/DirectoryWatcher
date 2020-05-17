@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,19 +17,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directory Watcher Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7B-bL-GIW">
-                                <rect key="frame" x="51.5" y="38" width="272" height="30"/>
+                                <rect key="frame" x="51.5" y="18" width="272" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbT-uX-H1D">
-                                <rect key="frame" x="16" y="98" width="77" height="24"/>
+                                <rect key="frame" x="16" y="78" width="77" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPn-Ij-lEG">
-                                <rect key="frame" x="16" y="137" width="259" height="30"/>
+                                <rect key="frame" x="16" y="117" width="259" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nUG-pU-1AG"/>
                                 </constraints>
@@ -41,7 +39,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waa-Ja-9JX">
-                                <rect key="frame" x="16" y="175" width="152" height="30"/>
+                                <rect key="frame" x="16" y="155" width="152" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="NYH-Q5-zab"/>
                                 </constraints>
@@ -51,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4y-VX-bsv">
-                                <rect key="frame" x="16" y="213" width="169" height="30"/>
+                                <rect key="frame" x="16" y="193" width="169" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="iBm-4N-Cek"/>
                                 </constraints>
@@ -60,14 +58,25 @@
                                     <action selector="deleteHardCodedFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qr8-t7-7W5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2A-Gh-BmL">
+                                <rect key="frame" x="16" y="231" width="137" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0W6-wR-PJT"/>
+                                </constraints>
+                                <state key="normal" title="•  Create subfolders"/>
+                                <connections>
+                                    <action selector="createFolder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ue5-vo-8E0"/>
+                                    <action selector="deleteHardCodedFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4je-8l-o6p"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watcher Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC9-p7-w4V">
-                                <rect key="frame" x="16" y="263" width="123.5" height="24"/>
+                                <rect key="frame" x="16" y="283" width="123.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdB-4C-Wss">
-                                <rect key="frame" x="16" y="295" width="343" height="372"/>
+                                <rect key="frame" x="16" y="315" width="343" height="352"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -78,6 +87,7 @@
                             <constraint firstItem="k4y-VX-bsv" firstAttribute="leading" secondItem="waa-Ja-9JX" secondAttribute="leading" id="0ep-CW-XmZ"/>
                             <constraint firstItem="NPn-Ij-lEG" firstAttribute="leading" secondItem="sbT-uX-H1D" secondAttribute="leading" id="1fJ-4Y-5Sc"/>
                             <constraint firstItem="I7B-bL-GIW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="32k-jC-geo"/>
+                            <constraint firstItem="e2A-Gh-BmL" firstAttribute="leading" secondItem="k4y-VX-bsv" secondAttribute="leading" id="3lB-DF-7Zk"/>
                             <constraint firstItem="waa-Ja-9JX" firstAttribute="top" secondItem="NPn-Ij-lEG" secondAttribute="bottom" constant="8" id="54X-c3-oRS"/>
                             <constraint firstItem="LdB-4C-Wss" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="5u6-ca-5b5"/>
                             <constraint firstItem="k4y-VX-bsv" firstAttribute="top" secondItem="waa-Ja-9JX" secondAttribute="bottom" constant="8" id="G6X-Mc-dUz"/>
@@ -86,11 +96,12 @@
                             <constraint firstItem="NPn-Ij-lEG" firstAttribute="top" secondItem="sbT-uX-H1D" secondAttribute="bottom" constant="15" id="NpY-fT-mdr"/>
                             <constraint firstItem="sbT-uX-H1D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="PX2-oi-wZp"/>
                             <constraint firstItem="uC9-p7-w4V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="U6T-vp-Tth"/>
-                            <constraint firstItem="uC9-p7-w4V" firstAttribute="top" secondItem="k4y-VX-bsv" secondAttribute="bottom" constant="20" id="Zq8-3c-05h"/>
                             <constraint firstItem="LdB-4C-Wss" firstAttribute="top" secondItem="uC9-p7-w4V" secondAttribute="bottom" constant="8" id="ZsG-pv-oGa"/>
                             <constraint firstItem="waa-Ja-9JX" firstAttribute="leading" secondItem="NPn-Ij-lEG" secondAttribute="leading" id="aYe-KA-icD"/>
                             <constraint firstItem="sbT-uX-H1D" firstAttribute="top" secondItem="I7B-bL-GIW" secondAttribute="bottom" constant="30" id="bqa-Oj-Cdh"/>
                             <constraint firstItem="LdB-4C-Wss" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gYB-ka-Nr9"/>
+                            <constraint firstItem="uC9-p7-w4V" firstAttribute="top" secondItem="e2A-Gh-BmL" secondAttribute="bottom" constant="22" id="rrm-aN-NgV"/>
+                            <constraint firstItem="e2A-Gh-BmL" firstAttribute="top" secondItem="k4y-VX-bsv" secondAttribute="bottom" constant="8" id="tJb-Jb-mgV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
