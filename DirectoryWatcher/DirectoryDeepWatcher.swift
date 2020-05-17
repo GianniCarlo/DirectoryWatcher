@@ -11,7 +11,7 @@ import Foundation
 public class DirectoryDeepWatcher: NSObject {
     var watchedUrl: URL
     
-	typealias SourceObject = (source: DispatchSourceFileSystemObject, descriptor: Int32)
+	typealias SourceObject = (source: DispatchSourceFileSystemObject, descriptor: Int32, url: URL)
 	private var sources = [SourceObject]()
     private var queue: DispatchQueue?
 
@@ -77,6 +77,15 @@ public class DirectoryDeepWatcher: NSObject {
 		source.setEventHandler {
 			[weak self] in
 			self?.onFolderNotification?(url)
+			
+			let enumerator = FileManager.default.enumerator(at: url,
+															includingPropertiesForKeys: [.creationDateKey, .isDirectoryKey],
+															options: [.skipsHiddenFiles], errorHandler: { (url, error) -> Bool in
+																print("directoryEnumerator error at \(url): ", error)
+																return true
+			})!
+
+			let _ = self?.startWatching(with: enumerator)
 		}
 		
 		source.setCancelHandler() {
@@ -85,13 +94,19 @@ public class DirectoryDeepWatcher: NSObject {
 		
 		source.resume()
 		
-		return (source, descriptor)
+		return (source, descriptor, url)
 	}
     
 	private func startWatching(with enumerator: FileManager.DirectoryEnumerator) -> Bool {
 		guard let url = enumerator.nextObject() as? URL else { return true }
 		
 		if !url.hasDirectoryPath {
+			return self.startWatching(with: enumerator)
+		}
+		
+		if (self.sources.contains { (source) -> Bool in
+			return source.url == url
+		}) {
 			return self.startWatching(with: enumerator)
 		}
 		
