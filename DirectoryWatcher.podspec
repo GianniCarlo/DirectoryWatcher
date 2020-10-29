@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DirectoryWatcher"
-  s.version      = "2.6.0"
+  s.version      = "2.7.1"
   s.summary      = "Lightweight listener that uses GCD to monitor changes in a given folder"
 
   # This description is used to generate tags and improve search results.
@@ -89,7 +89,7 @@ DirectoryWatcher is a lightweight class that uses GCD to monitor a given path fo
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files = "DirectoryWatcher/**/*.{h,swift}"
+  s.source_files = "Sources/**/*.{h,swift}"
   # s.public_header_files = "Classes/**/*.h"
 
 
