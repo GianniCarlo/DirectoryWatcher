@@ -26,12 +26,12 @@
 
 /* Begin PBXFileReference section */
 		41AF69092422FA2B00350FB1 /* DirectoryDeepWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryDeepWatcher.swift; sourceTree = "<group>"; };
+		41C7B75C254A82B2002326D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41C7B75D254A82C5002326D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41D4F29F2100F712009F1B1E /* DirectoryWatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DirectoryWatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D4F2A22100F712009F1B1E /* DirectoryWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DirectoryWatcher.h; sourceTree = "<group>"; };
-		41D4F2A32100F712009F1B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41D4F2A82100F712009F1B1E /* DirectoryWatcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DirectoryWatcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D4F2AD2100F712009F1B1E /* DirectoryWatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryWatcherTests.swift; sourceTree = "<group>"; };
-		41D4F2AF2100F712009F1B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41D4F2B92100F738009F1B1E /* DirectoryWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryWatcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,20 +76,22 @@
 			isa = PBXGroup;
 			children = (
 				41D4F2A22100F712009F1B1E /* DirectoryWatcher.h */,
-				41D4F2A32100F712009F1B1E /* Info.plist */,
 				41D4F2B92100F738009F1B1E /* DirectoryWatcher.swift */,
 				41AF69092422FA2B00350FB1 /* DirectoryDeepWatcher.swift */,
+				41C7B75C254A82B2002326D9 /* Info.plist */,
 			);
-			path = DirectoryWatcher;
+			name = DirectoryWatcher;
+			path = Sources/DirectoryWatcher;
 			sourceTree = "<group>";
 		};
 		41D4F2AC2100F712009F1B1E /* DirectoryWatcherTests */ = {
 			isa = PBXGroup;
 			children = (
 				41D4F2AD2100F712009F1B1E /* DirectoryWatcherTests.swift */,
-				41D4F2AF2100F712009F1B1E /* Info.plist */,
+				41C7B75D254A82C5002326D9 /* Info.plist */,
 			);
-			path = DirectoryWatcherTests;
+			name = DirectoryWatcherTests;
+			path = Tests/DirectoryWatcherTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +359,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DirectoryWatcher/Info.plist;
+				INFOPLIST_FILE = Sources/DirectoryWatcher/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -385,7 +387,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DirectoryWatcher/Info.plist;
+				INFOPLIST_FILE = Sources/DirectoryWatcher/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -407,7 +409,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7TJSJXWUZ;
-				INFOPLIST_FILE = DirectoryWatcherTests/Info.plist;
+				INFOPLIST_FILE = Tests/DirectoryWatcherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -426,7 +428,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7TJSJXWUZ;
-				INFOPLIST_FILE = DirectoryWatcherTests/Info.plist;
+				INFOPLIST_FILE = Tests/DirectoryWatcherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
