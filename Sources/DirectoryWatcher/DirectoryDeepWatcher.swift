@@ -9,7 +9,7 @@
 import Foundation
 
 public class DirectoryDeepWatcher: NSObject {
-    var watchedUrl: URL
+    public let watchedUrl: URL
     
 	typealias SourceObject = (source: DispatchSourceFileSystemObject, descriptor: Int32, url: URL)
 	private var sources = [SourceObject]()
@@ -18,7 +18,7 @@ public class DirectoryDeepWatcher: NSObject {
     public var onFolderNotification: ((URL) -> Void)?
     
     //init
-    init(watchedUrl: URL) {
+    public init(watchedUrl: URL) {
         self.watchedUrl = watchedUrl
 		self.queue = DispatchQueue.global()
     }
