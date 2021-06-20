@@ -11,7 +11,7 @@ import Foundation
 public class DirectoryWatcher: NSObject {
     static let retryCount = 5
     static let pollInterval = 0.2
-    var watchedUrl: URL
+    public let watchedUrl: URL
     
     private var source: DispatchSourceFileSystemObject?
     private var previousContents: Set<URL>
@@ -24,7 +24,7 @@ public class DirectoryWatcher: NSObject {
     public var onDeletedFiles: (([URL]) -> Void)?
     
     //init
-    init(watchedUrl: URL) {
+    public init(watchedUrl: URL) {
         self.watchedUrl = watchedUrl
         let contentsArray = (try? FileManager.default.contentsOfDirectory(at: watchedUrl, includingPropertiesForKeys: [.isDirectoryKey], options: .skipsHiddenFiles)) ?? []
         self.previousContents = Set(contentsArray)
