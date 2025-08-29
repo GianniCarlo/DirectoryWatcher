@@ -6,6 +6,7 @@
 //  Copyright © 2020 Tortuga Power. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 public class DirectoryDeepWatcher: NSObject {
@@ -18,6 +19,8 @@ public class DirectoryDeepWatcher: NSObject {
   private var queue: DispatchQueue?
 
   public var onFolderNotification: ((URL) -> Void)?
+  /// Alternative publisher for onFolderNotification events
+  public var folderPublisher = PassthroughSubject<URL, Never>()
 
   //init
   init(watchedUrl: URL) {
@@ -91,6 +94,7 @@ public class DirectoryDeepWatcher: NSObject {
     source.setEventHandler {
       [weak self] in
       self?.onFolderNotification?(url)
+      self?.folderPublisher.send(url)
 
       let enumerator = FileManager.default.enumerator(
         at: url,

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Tortuga Power. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 public class DirectoryWatcher: NSObject {
@@ -22,6 +23,8 @@ public class DirectoryWatcher: NSObject {
   public var ignoreDirectories = true
   public var onNewFiles: (([URL]) -> Void)?
   public var onDeletedFiles: (([URL]) -> Void)?
+  /// Alternative publisher for onNewFiles events
+  public var newFilesPublisher = PassthroughSubject<[URL], Never>()
 
   //init
   init(watchedUrl: URL) {
@@ -199,6 +202,7 @@ extension DirectoryWatcher {
             return element
           })
           self.onNewFiles?(elements)
+          self.newFilesPublisher.send(elements)
         }
       }
     }
