@@ -9,7 +9,7 @@
 import Combine
 import Foundation
 
-public class DirectoryDeepWatcher: NSObject {
+public class DirectoryDeepWatcher: NSObject, ObservableObject {
   public var watchedUrl: URL
 
   typealias SourceObject = (

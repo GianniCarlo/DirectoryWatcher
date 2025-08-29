@@ -9,7 +9,7 @@
 import Combine
 import Foundation
 
-public class DirectoryWatcher: NSObject {
+public class DirectoryWatcher: NSObject, ObservableObject {
   static let retryCount = 5
   static let pollInterval = 0.2
   public var watchedUrl: URL
