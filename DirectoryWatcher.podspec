@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DirectoryWatcher"
-  s.version      = "2.8.1"
+  s.version      = "2.8.2"
   s.summary      = "Lightweight listener that uses GCD to monitor changes in a given folder"
 
   # This description is used to generate tags and improve search results.
