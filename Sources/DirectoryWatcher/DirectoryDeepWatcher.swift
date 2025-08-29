@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 public class DirectoryDeepWatcher: NSObject {
-  var watchedUrl: URL
+  public var watchedUrl: URL
 
   typealias SourceObject = (
     source: DispatchSourceFileSystemObject, descriptor: Int32, url: URL
@@ -23,7 +23,7 @@ public class DirectoryDeepWatcher: NSObject {
   public var folderPublisher = PassthroughSubject<URL, Never>()
 
   //init
-  init(watchedUrl: URL) {
+  public init(watchedUrl: URL) {
     self.watchedUrl = watchedUrl
     self.queue = DispatchQueue.global()
   }

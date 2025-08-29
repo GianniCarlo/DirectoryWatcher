@@ -12,7 +12,7 @@ import Foundation
 public class DirectoryWatcher: NSObject {
   static let retryCount = 5
   static let pollInterval = 0.2
-  var watchedUrl: URL
+  public var watchedUrl: URL
 
   private var source: DispatchSourceFileSystemObject?
   private var previousContents: Set<URL>
@@ -27,7 +27,7 @@ public class DirectoryWatcher: NSObject {
   public var newFilesPublisher = PassthroughSubject<[URL], Never>()
 
   //init
-  init(watchedUrl: URL) {
+  public init(watchedUrl: URL) {
     self.watchedUrl = watchedUrl
     let contentsArray =
       (try? FileManager.default.contentsOfDirectory(
