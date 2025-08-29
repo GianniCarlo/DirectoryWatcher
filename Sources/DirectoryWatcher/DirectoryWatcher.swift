@@ -20,15 +20,19 @@ public class DirectoryWatcher: NSObject, ObservableObject {
   private var retriesLeft: Int!
   private var directoryChanging = false
 
-  public var ignoreDirectories = true
+  public var ignoreDirectories: Bool
   public var onNewFiles: (([URL]) -> Void)?
   public var onDeletedFiles: (([URL]) -> Void)?
   /// Alternative publisher for onNewFiles events
   public var newFilesPublisher = PassthroughSubject<[URL], Never>()
 
   //init
-  public init(watchedUrl: URL) {
+  public init(
+    watchedUrl: URL,
+    ignoreDirectories: Bool = true
+  ) {
     self.watchedUrl = watchedUrl
+    self.ignoreDirectories = ignoreDirectories
     let contentsArray =
       (try? FileManager.default.contentsOfDirectory(
         at: watchedUrl,
