@@ -42,8 +42,14 @@ public class DirectoryWatcher: NSObject, ObservableObject {
     self.previousContents = Set(contentsArray)
   }
 
-  public class func watch(_ url: URL) -> DirectoryWatcher? {
-    let directoryWatcher = DirectoryWatcher(watchedUrl: url)
+  public class func watch(
+    _ url: URL,
+    ignoreDirectories: Bool = true
+  ) -> DirectoryWatcher? {
+    let directoryWatcher = DirectoryWatcher(
+      watchedUrl: url,
+      ignoreDirectories: ignoreDirectories
+    )
 
     guard directoryWatcher.startWatching() else {
       // Something went wrong, return nil
